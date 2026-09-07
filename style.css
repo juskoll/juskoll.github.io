@@ -1,0 +1,483 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #fff4b8, transparent 40%),
+        linear-gradient(135deg, #d8b45c, #f5dfa0, #c9a552);
+
+    font-family: Georgia, "Times New Roman", serif;
+    color: #5b4632;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   PARTICLES
+========================= */
+
+.particles {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+
+    width: 5px;
+    height: 5px;
+
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+
+    animation: float 8s linear infinite;
+}
+
+@keyframes float {
+
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+    }
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+}
+
+
+/* =========================
+   OPENING
+========================= */
+
+.opening {
+    text-align: center;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.opening.hide {
+    opacity: 0;
+    transform: scale(0.9);
+    pointer-events: none;
+}
+
+
+/* =========================
+   ENVELOPE
+========================= */
+
+.envelope {
+    position: relative;
+
+    width: 320px;
+    height: 210px;
+
+    margin: 0 auto 35px;
+
+    cursor: pointer;
+
+    perspective: 1000px;
+}
+
+.envelope-back {
+    position: absolute;
+
+    inset: 0;
+
+    background: #d8b56c;
+
+    border-radius: 5px;
+
+    box-shadow:
+        0 20px 40px rgba(80, 55, 20, 0.25);
+}
+
+
+/* Letter inside */
+
+.letter-preview {
+    position: absolute;
+
+    width: 270px;
+    height: 170px;
+
+    left: 25px;
+    top: 20px;
+
+    background: #fff8dc;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+
+    color: #806442;
+
+    transition: transform 1s ease;
+}
+
+.envelope.open .letter-preview {
+    transform: translateY(-100px);
+}
+
+
+/* Envelope flap */
+
+.flap {
+    position: absolute;
+
+    width: 0;
+    height: 0;
+
+    left: 0;
+    top: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+
+    border-top: 115px solid #e7c47a;
+
+    transform-origin: top;
+
+    transition: transform 0.8s ease;
+
+    z-index: 4;
+}
+
+.envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+
+/* Envelope front */
+
+.envelope-front {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+
+    border-bottom: 120px solid #d1aa5e;
+
+    z-index: 3;
+}
+
+
+/* =========================
+   TEXT
+========================= */
+
+.opening h1 {
+    font-size: 34px;
+    font-weight: normal;
+
+    margin-bottom: 10px;
+}
+
+.opening p {
+    font-size: 17px;
+
+    margin-bottom: 25px;
+
+    opacity: 0.8;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+    border: none;
+
+    background: #735534;
+    color: #fff8e6;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px rgba(70, 45, 20, 0.25);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    background: #5f4328;
+}
+
+button:active {
+    transform: scale(0.96);
+}
+
+
+/* =========================
+   LETTER PAGE
+========================= */
+
+.letter-page {
+    position: absolute;
+
+    width: 100%;
+
+    top: 0;
+    left: 0;
+
+    min-height: 100vh;
+
+    padding: 50px 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(30px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.letter-page.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+
+/* =========================
+   PAPER
+========================= */
+
+.paper {
+    position: relative;
+
+    width: min(700px, 100%);
+
+    padding: 55px 55px 50px;
+
+    background:
+        linear-gradient(
+            rgba(255, 250, 225, 0.94),
+            rgba(250, 239, 198, 0.94)
+        );
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 25px 60px rgba(70, 45, 20, 0.3);
+
+    border: 1px solid rgba(130, 95, 45, 0.25);
+}
+
+
+/* Paper lines */
+
+.paper::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 31px,
+            rgba(120, 90, 50, 0.08) 32px
+        );
+
+    pointer-events: none;
+}
+
+
+/* Decoration */
+
+.paper-decoration {
+    position: absolute;
+
+    top: 20px;
+    right: 25px;
+
+    font-size: 30px;
+
+    opacity: 0.5;
+}
+
+.date {
+    text-align: right;
+
+    font-size: 14px;
+
+    opacity: 0.6;
+
+    margin-bottom: 35px;
+}
+
+.paper h2 {
+    font-size: 30px;
+
+    font-weight: normal;
+
+    margin-bottom: 30px;
+}
+
+.letter-content {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 18px;
+
+    line-height: 2;
+
+    letter-spacing: 0.2px;
+}
+
+.letter-content p {
+    margin-bottom: 22px;
+}
+
+.ending {
+    margin-top: 35px;
+
+    text-align: right;
+
+    font-style: italic;
+}
+
+.ending span {
+    font-size: 22px;
+}
+
+.heart {
+    text-align: center;
+
+    font-size: 28px;
+
+    opacity: 0.5;
+
+    margin-top: 20px;
+}
+
+
+/* Close button */
+
+#closeButton {
+    margin-top: 25px;
+
+    background: rgba(80, 55, 30, 0.85);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .envelope {
+        width: 280px;
+        height: 185px;
+    }
+
+    .flap {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 100px;
+    }
+
+    .envelope-front {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-bottom-width: 105px;
+    }
+
+    .letter-preview {
+        width: 235px;
+        height: 150px;
+
+        left: 22px;
+    }
+
+    .opening h1 {
+        font-size: 27px;
+    }
+
+    .paper {
+        padding: 40px 25px;
+    }
+
+    .paper h2 {
+        font-size: 26px;
+    }
+
+    .letter-content {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .date {
+        margin-bottom: 25px;
+    }
+}
