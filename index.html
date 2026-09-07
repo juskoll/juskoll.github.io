@@ -1,12 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Website</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Letter For You 💌</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <h1>Hi my loveyyyy shennaa! 👋</h1>
-    <p>kabalo nko mag ubra subdomain hehe. I just wanna say that i love you so much hehehe</p>
-    <h2>I love my baby so much</h2>
+    <div class="particles"></div>
+
+    <main class="container">
+
+        <!-- Opening Screen -->
+        <section id="opening" class="opening">
+
+            <div class="envelope" id="envelope">
+
+                <div class="envelope-back"></div>
+
+                <div class="letter-preview">
+                    <span>For You</span>
+                </div>
+
+                <div class="flap"></div>
+
+                <div class="envelope-front"></div>
+
+            </div>
+
+            <h1>A little letter for you</h1>
+
+            <p>There are some things I want you to know.</p>
+
+            <button id="openButton">
+                Open My Letter 💌
+            </button>
+
+        </section>
+
+
+        <!-- Letter -->
+        <section id="letterPage" class="letter-page">
+
+            <div class="paper">
+
+                <div class="paper-decoration">♡</div>
+
+                <p class="date">September 7, 2026</p>
+
+                <h2>My Dearest,</h2>
+
+                <div class="letter-content">
+
+                    <p>
+                        I don't always know how to put everything
+                        I feel into words, but I want to try.
+                    </p>
+
+                    <p>
+                        Thank you for being a part of my life.
+                        For the little moments, the conversations,
+                        the laughs, and even the difficult days.
+                    </p>
+
+                    <p>
+                        You mean more to me than I sometimes know
+                        how to explain. There are moments when I
+                        simply look back at everything we've shared
+                        and realize how special those memories are
+                        to me.
+                    </p>
+
+                    <p>
+                        I don't expect everything to always be
+                        perfect. I just want you to know that I
+                        genuinely care about you.
+                    </p>
+
+                    <p>
+                        Whatever happens, I hope you always remember
+                        that you are important, appreciated, and
+                        loved.
+                    </p>
+
+                    <p>
+                        And if I could ask for one thing, it would
+                        simply be to keep making memories together,
+                        one day at a time.
+                    </p>
+
+                    <p class="ending">
+                        With all my heart,<br>
+                        <span>Justin ♡</span>
+                    </p>
+
+                </div>
+
+                <div class="heart">♥</div>
+
+            </div>
+
+            <button id="closeButton">
+                Close Letter
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- Optional Music -->
+    <audio id="music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script src="script.js"></script>
+
 </body>
 </html>
