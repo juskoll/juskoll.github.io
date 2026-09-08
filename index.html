@@ -18,10 +18,8 @@
 
     .music-player {
         position: fixed;
-
         top: 25px;
         left: 50%;
-
         transform: translateX(-50%);
 
         width: 190px;
@@ -36,19 +34,13 @@
 
         z-index: 9999;
 
-        transition:
-            top 0.6s ease,
-            right 0.6s ease,
-            left 0.6s ease,
-            bottom 0.6s ease,
-            transform 0.6s ease;
+        transition: all 0.7s ease;
     }
 
-    /* After the letter is opened */
+    /* Move to bottom-right when letter opens */
     .music-player.letter-open {
         top: auto;
         left: auto;
-
         right: 20px;
         bottom: 20px;
 
@@ -145,8 +137,6 @@
         font-size: 15px;
 
         cursor: pointer;
-
-        transition: transform 0.2s;
     }
 
     .music-player button:hover {
@@ -166,8 +156,6 @@
             width: 145px;
 
             padding: 9px;
-
-            border-radius: 12px;
         }
 
         .music-player.letter-open {
@@ -178,10 +166,6 @@
         .album {
             width: 60px;
             height: 60px;
-
-            border-radius: 8px;
-
-            margin-bottom: 5px;
         }
 
         .music-player h2 {
@@ -190,8 +174,6 @@
 
         .music-player p {
             font-size: 10px;
-
-            margin-bottom: 6px;
         }
 
         .time {
@@ -200,8 +182,6 @@
 
         .progress-container {
             height: 4px;
-
-            margin-bottom: 7px;
         }
 
         .music-player button {
@@ -243,13 +223,15 @@
 
         </div>
 
-        <h1>A little letter for you</h1>
+        <h1>
+            A little letter for you
+        </h1>
 
         <p>
             There are some things I want you to know.
         </p>
 
-        <button id="openButton">
+        <button id="openButton" type="button">
             Open My Letter 💌
         </button>
 
@@ -334,7 +316,7 @@
 
         </div>
 
-        <button id="closeButton">
+        <button id="closeButton" type="button">
             Close Letter
         </button>
 
@@ -345,9 +327,12 @@
 
 <!-- =========================
      MUSIC PLAYER
-========================= -->
+     ========================= -->
 
-<div class="music-player" id="musicPlayer">
+<div
+    class="music-player"
+    id="musicPlayer"
+>
 
     <img
         src="cover.webp"
@@ -389,7 +374,10 @@
 
     <div class="controls">
 
-        <button id="playButton">
+        <button
+            id="playButton"
+            type="button"
+        >
             ▶
         </button>
 
@@ -408,10 +396,32 @@
 
 
 <!-- =========================
-     JAVASCRIPT
-========================= -->
+     ALL JAVASCRIPT
+     ========================= -->
 
 <script>
+
+    /* =========================
+       GET ELEMENTS
+       ========================= */
+
+    const envelope =
+        document.getElementById("envelope");
+
+    const openButton =
+        document.getElementById("openButton");
+
+    const opening =
+        document.getElementById("opening");
+
+    const letterPage =
+        document.getElementById("letterPage");
+
+    const closeButton =
+        document.getElementById("closeButton");
+
+    const musicPlayer =
+        document.getElementById("musicPlayer");
 
     const audio =
         document.getElementById("audio");
@@ -431,21 +441,75 @@
     const duration =
         document.getElementById("duration");
 
-    const musicPlayer =
-        document.getElementById("musicPlayer");
+
+    /* =========================
+       OPEN LETTER
+    ========================= */
+
+    openButton.addEventListener("click", function () {
+
+        console.log("Open button clicked");
+
+        // Open envelope
+        envelope.classList.add("open");
+
+        // Move music player
+        musicPlayer.classList.add("letter-open");
+
+        // Wait for envelope animation
+        setTimeout(function () {
+
+            opening.classList.add("hide");
+
+            letterPage.classList.add("show");
+
+        }, 900);
+
+    });
+
+
+    /* =========================
+       CLOSE LETTER
+    ========================= */
+
+    closeButton.addEventListener("click", function () {
+
+        letterPage.classList.remove("show");
+
+        musicPlayer.classList.remove("letter-open");
+
+        setTimeout(function () {
+
+            opening.classList.remove("hide");
+
+            envelope.classList.remove("open");
+
+        }, 700);
+
+    });
 
 
     /* =========================
        PLAY / PAUSE
     ========================= */
 
-    playButton.addEventListener("click", () => {
+    playButton.addEventListener("click", function () {
 
         if (audio.paused) {
 
-            audio.play();
+            audio.play()
+                .then(function () {
 
-            playButton.textContent = "❚❚";
+                    playButton.textContent = "❚❚";
+
+                })
+                .catch(function () {
+
+                    console.log(
+                        "The browser blocked audio playback."
+                    );
+
+                });
 
         } else {
 
@@ -462,7 +526,7 @@
        UPDATE PROGRESS
     ========================= */
 
-    audio.addEventListener("timeupdate", () => {
+    audio.addEventListener("timeupdate", function () {
 
         if (!audio.duration) return;
 
@@ -479,10 +543,10 @@
 
 
     /* =========================
-       SONG DURATION
+       LOAD DURATION
     ========================= */
 
-    audio.addEventListener("loadedmetadata", () => {
+    audio.addEventListener("loadedmetadata", function () {
 
         duration.textContent =
             formatTime(audio.duration);
@@ -491,12 +555,12 @@
 
 
     /* =========================
-       CLICK PROGRESS BAR
+       SEEK SONG
     ========================= */
 
     progressContainer.addEventListener(
         "click",
-        (event) => {
+        function (event) {
 
             if (!audio.duration) return;
 
@@ -520,38 +584,13 @@
        SONG ENDED
     ========================= */
 
-    audio.addEventListener("ended", () => {
+    audio.addEventListener("ended", function () {
 
         playButton.textContent = "▶";
 
         progress.style.width = "0%";
 
         currentTime.textContent = "0:00";
-
-    });
-
-
-    /* =========================
-       MOVE PLAYER WHEN LETTER OPENS
-    ========================= */
-
-    const openButton =
-        document.getElementById("openButton");
-
-    const closeButton =
-        document.getElementById("closeButton");
-
-
-    openButton.addEventListener("click", () => {
-
-        musicPlayer.classList.add("letter-open");
-
-    });
-
-
-    closeButton.addEventListener("click", () => {
-
-        musicPlayer.classList.remove("letter-open");
 
     });
 
@@ -569,21 +608,54 @@
         const minutes =
             Math.floor(seconds / 60);
 
-        const secs =
+        const secondsLeft =
             Math.floor(seconds % 60);
 
         return minutes + ":" +
-            (secs < 10 ? "0" : "") +
-            secs;
+            (secondsLeft < 10 ? "0" : "") +
+            secondsLeft;
+
+    }
+
+
+    /* =========================
+       FLOATING PARTICLES
+    ========================= */
+
+    const particleContainer =
+        document.querySelector(".particles");
+
+    if (particleContainer) {
+
+        for (let i = 0; i < 35; i++) {
+
+            const particle =
+                document.createElement("div");
+
+            particle.classList.add("particle");
+
+            particle.style.left =
+                Math.random() * 100 + "%";
+
+            particle.style.animationDelay =
+                Math.random() * 8 + "s";
+
+            particle.style.animationDuration =
+                5 + Math.random() * 7 + "s";
+
+            particle.style.width =
+                3 + Math.random() * 5 + "px";
+
+            particle.style.height =
+                particle.style.width;
+
+            particleContainer.appendChild(particle);
+
+        }
 
     }
 
 </script>
-
-
-<!-- YOUR EXISTING JAVASCRIPT -->
-
-<script src="script.js"></script>
 ```
 
 </body>
