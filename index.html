@@ -12,6 +12,738 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
+
+/* =========================
+PASTEL FLOWER BOUQUET
+========================= */
+
+.bouquet {
+position: relative;
+
+```
+width: 330px;
+height: 270px;
+
+margin: 0 auto 15px;
+
+opacity: 0;
+
+transform:
+    translateY(70px)
+    scale(0.65);
+
+pointer-events: none;
+
+transition:
+    opacity 0.8s ease,
+    transform 1s cubic-bezier(.17,.67,.32,1.25);
+
+z-index: 5;
+```
+
+}
+
+/* SHOW BOUQUET */
+
+.letter-page.show .bouquet {
+opacity: 1;
+
+```
+transform:
+    translateY(0)
+    scale(1);
+```
+
+}
+
+/* =========================
+FLOWER AREA
+========================= */
+
+.flowers {
+position: absolute;
+
+```
+width: 100%;
+height: 220px;
+
+left: 0;
+top: 0;
+```
+
+}
+
+/* =========================
+GERBERAS
+========================= */
+
+.gerbera {
+position: absolute;
+
+```
+width: 62px;
+height: 62px;
+
+transform-origin: center bottom;
+```
+
+}
+
+.gerbera-one {
+left: 80px;
+top: 38px;
+
+```
+transform: rotate(-13deg);
+```
+
+}
+
+.gerbera-two {
+right: 70px;
+top: 42px;
+
+```
+transform: rotate(12deg);
+```
+
+}
+
+.petals {
+position: absolute;
+
+```
+width: 100%;
+height: 100%;
+```
+
+}
+
+.petals i {
+position: absolute;
+
+```
+width: 17px;
+height: 31px;
+
+left: 23px;
+top: 0;
+
+background: #f7dca0;
+
+border-radius: 50% 50% 45% 45%;
+
+transform-origin: 8px 31px;
+```
+
+}
+
+/* GERBERA PETAL POSITIONS */
+
+.petals i:nth-child(1) {
+transform: rotate(0deg);
+}
+
+.petals i:nth-child(2) {
+transform: rotate(45deg);
+}
+
+.petals i:nth-child(3) {
+transform: rotate(90deg);
+}
+
+.petals i:nth-child(4) {
+transform: rotate(135deg);
+}
+
+.petals i:nth-child(5) {
+transform: rotate(180deg);
+}
+
+.petals i:nth-child(6) {
+transform: rotate(225deg);
+}
+
+.petals i:nth-child(7) {
+transform: rotate(270deg);
+}
+
+.petals i:nth-child(8) {
+transform: rotate(315deg);
+}
+
+.flower-center {
+position: absolute;
+
+```
+width: 21px;
+height: 21px;
+
+left: 20px;
+top: 20px;
+
+border-radius: 50%;
+
+background: #d5a85f;
+
+box-shadow:
+    inset 0 0 0 5px #e8c879;
+```
+
+}
+
+/* =========================
+TULIPS
+========================= */
+
+.tulip {
+position: absolute;
+
+```
+width: 55px;
+height: 75px;
+```
+
+}
+
+.tulip-one {
+left: 122px;
+top: 48px;
+
+```
+transform: rotate(-5deg);
+```
+
+}
+
+.tulip-two {
+left: 160px;
+top: 25px;
+
+```
+transform: rotate(2deg);
+```
+
+}
+
+.tulip-three {
+right: 120px;
+top: 55px;
+
+```
+transform: rotate(7deg);
+```
+
+}
+
+.tulip-head {
+position: relative;
+
+```
+width: 45px;
+height: 48px;
+
+margin: auto;
+```
+
+}
+
+.tulip-head span {
+position: absolute;
+
+```
+bottom: 0;
+
+width: 30px;
+height: 43px;
+
+background: #f3d59a;
+
+border-radius:
+    50% 50% 45% 45%;
+```
+
+}
+
+.tulip-head span:nth-child(1) {
+left: 0;
+
+```
+transform: rotate(-18deg);
+```
+
+}
+
+.tulip-head span:nth-child(2) {
+left: 8px;
+z-index: 2;
+
+```
+background: #f7dfa9;
+```
+
+}
+
+.tulip-head span:nth-child(3) {
+right: 0;
+
+```
+transform: rotate(18deg);
+```
+
+}
+
+/* =========================
+LILIES
+========================= */
+
+.lily {
+position: absolute;
+
+```
+width: 75px;
+height: 75px;
+```
+
+}
+
+.lily-one {
+left: 20px;
+top: 85px;
+
+```
+transform: rotate(-18deg);
+```
+
+}
+
+.lily-two {
+right: 18px;
+top: 92px;
+
+```
+transform: rotate(17deg);
+```
+
+}
+
+.lily-petals {
+position: relative;
+
+```
+width: 70px;
+height: 70px;
+```
+
+}
+
+.lily-petals span {
+position: absolute;
+
+```
+width: 25px;
+height: 50px;
+
+left: 23px;
+top: 8px;
+
+background: #fff1c9;
+
+border-radius:
+    70% 30% 70% 30%;
+
+transform-origin: center bottom;
+```
+
+}
+
+/* LILY PETAL POSITIONS */
+
+.lily-petals span:nth-child(1) {
+transform: rotate(0deg);
+}
+
+.lily-petals span:nth-child(2) {
+transform: rotate(60deg);
+}
+
+.lily-petals span:nth-child(3) {
+transform: rotate(120deg);
+}
+
+.lily-petals span:nth-child(4) {
+transform: rotate(180deg);
+}
+
+.lily-petals span:nth-child(5) {
+transform: rotate(240deg);
+}
+
+.lily-petals span:nth-child(6) {
+transform: rotate(300deg);
+}
+
+.lily-center {
+position: absolute;
+
+```
+width: 20px;
+height: 20px;
+
+left: 27px;
+top: 27px;
+```
+
+}
+
+.lily-center b {
+position: absolute;
+
+```
+width: 4px;
+height: 16px;
+
+background: #d3a85c;
+
+border-radius: 50%;
+
+transform-origin: bottom center;
+```
+
+}
+
+.lily-center b:nth-child(1) {
+transform: rotate(-25deg);
+}
+
+.lily-center b:nth-child(2) {
+transform: rotate(0deg);
+}
+
+.lily-center b:nth-child(3) {
+transform: rotate(25deg);
+}
+
+/* =========================
+LITTLE FLOWERS
+========================= */
+
+.tiny-flower {
+position: absolute;
+
+```
+color: #f1d28e;
+
+font-size: 22px;
+
+text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.08);
+```
+
+}
+
+.tiny-one {
+left: 62px;
+top: 72px;
+}
+
+.tiny-two {
+left: 110px;
+top: 105px;
+}
+
+.tiny-three {
+right: 95px;
+top: 85px;
+}
+
+.tiny-four {
+right: 55px;
+top: 125px;
+}
+
+/* =========================
+LEAVES
+========================= */
+
+.leaf {
+position: absolute;
+
+```
+width: 20px;
+height: 45px;
+
+background: #b8c89b;
+
+border-radius:
+    100% 0 100% 0;
+
+transform-origin: bottom center;
+```
+
+}
+
+.leaf-one {
+left: 70px;
+top: 125px;
+
+```
+transform: rotate(-48deg);
+```
+
+}
+
+.leaf-two {
+left: 125px;
+top: 145px;
+
+```
+transform: rotate(-70deg);
+```
+
+}
+
+.leaf-three {
+right: 70px;
+top: 130px;
+
+```
+transform: rotate(48deg);
+```
+
+}
+
+.leaf-four {
+right: 125px;
+top: 150px;
+
+```
+transform: rotate(70deg);
+```
+
+}
+
+/* =========================
+STEMS
+========================= */
+
+.stems {
+position: absolute;
+
+```
+width: 150px;
+height: 100px;
+
+left: 90px;
+top: 105px;
+```
+
+}
+
+.stems span {
+position: absolute;
+
+```
+width: 3px;
+height: 125px;
+
+left: 75px;
+top: 0;
+
+background: #91a878;
+
+transform-origin: top center;
+```
+
+}
+
+.stems span:nth-child(1) {
+transform: rotate(-25deg);
+}
+
+.stems span:nth-child(2) {
+transform: rotate(-17deg);
+}
+
+.stems span:nth-child(3) {
+transform: rotate(-8deg);
+}
+
+.stems span:nth-child(4) {
+transform: rotate(0deg);
+}
+
+.stems span:nth-child(5) {
+transform: rotate(8deg);
+}
+
+.stems span:nth-child(6) {
+transform: rotate(17deg);
+}
+
+.stems span:nth-child(7) {
+transform: rotate(25deg);
+}
+
+/* =========================
+WRAPPING PAPER
+========================= */
+
+.bouquet-wrap {
+position: absolute;
+
+```
+width: 170px;
+height: 90px;
+
+left: 80px;
+bottom: 0;
+
+background: #f6e8bd;
+
+clip-path: polygon(
+    8% 0%,
+    92% 0%,
+    72% 100%,
+    28% 100%
+);
+
+box-shadow:
+    0 8px 15px rgba(0, 0, 0, 0.12);
+```
+
+}
+
+.wrap-fold {
+position: absolute;
+
+```
+width: 100%;
+height: 100%;
+
+background: rgba(255, 255, 255, 0.25);
+
+clip-path: polygon(
+    50% 0%,
+    100% 0%,
+    72% 100%,
+    50% 100%
+);
+```
+
+}
+
+/* =========================
+BOUQUET APPEAR ANIMATION
+========================= */
+
+.letter-page.show .gerbera,
+.letter-page.show .tulip,
+.letter-page.show .lily,
+.letter-page.show .tiny-flower,
+.letter-page.show .leaf {
+
+```
+animation:
+    flowerAppear 0.8s ease both;
+```
+
+}
+
+.letter-page.show .gerbera-one {
+animation-delay: 0.15s;
+}
+
+.letter-page.show .gerbera-two {
+animation-delay: 0.25s;
+}
+
+.letter-page.show .tulip-one {
+animation-delay: 0.35s;
+}
+
+.letter-page.show .tulip-two {
+animation-delay: 0.2s;
+}
+
+.letter-page.show .tulip-three {
+animation-delay: 0.4s;
+}
+
+.letter-page.show .lily-one {
+animation-delay: 0.3s;
+}
+
+.letter-page.show .lily-two {
+animation-delay: 0.45s;
+}
+
+.letter-page.show .tiny-flower {
+animation-delay: 0.55s;
+}
+
+.letter-page.show .leaf {
+animation-delay: 0.5s;
+}
+
+@keyframes flowerAppear {
+
+```
+0% {
+    opacity: 0;
+
+    transform:
+        translateY(35px)
+        scale(0.4)
+        rotate(-10deg);
+}
+
+70% {
+    opacity: 1;
+
+    transform:
+        translateY(-5px)
+        scale(1.08)
+        rotate(3deg);
+}
+
+100% {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1)
+        rotate(0deg);
+}
+```
+
+}
+
+/* =========================
+MOBILE BOUQUET
+========================= */
+
+@media (max-width: 600px) {
+
+```
+.bouquet {
+    width: 260px;
+    height: 220px;
+
+    transform:
+        translateY(70px)
+        scale(0.55);
+}
+
+.letter-page.show .bouquet {
+    transform:
+        translateY(0)
+        scale(0.75);
+}
+```
+
+}
+
     /* =========================
        MUSIC PLAYER
     ========================= */
