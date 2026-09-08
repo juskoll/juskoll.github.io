@@ -1,88 +1,553 @@
-const envelope = document.getElementById("envelope");
-const openButton = document.getElementById("openButton");
+<!DOCTYPE html>
 
-const opening = document.getElementById("opening");
-const letterPage = document.getElementById("letterPage");
+<html lang="en">
 
-const closeButton = document.getElementById("closeButton");
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-const music = document.getElementById("music");
+```
+<title>A Letter For You 💌</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+    /* =========================
+       MUSIC PLAYER
+    ========================= */
+
+    .music-player {
+        position: fixed;
+        top: 25px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 190px;
+        padding: 12px;
+
+        background: #fff8df;
+        border-radius: 14px;
+
+        text-align: center;
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
+
+        z-index: 9999;
+
+        transition:
+            top 0.7s ease,
+            right 0.7s ease,
+            left 0.7s ease,
+            bottom 0.7s ease,
+            transform 0.7s ease;
+    }
+
+    /* Move to bottom-right after opening */
+    .music-player.letter-open {
+        top: auto;
+        left: auto;
+        right: 20px;
+        bottom: 20px;
+
+        transform: none;
+    }
+
+    .album {
+        width: 85px;
+        height: 85px;
+
+        margin: 0 auto 8px;
+
+        border-radius: 10px;
+        object-fit: cover;
+
+        display: block;
+    }
+
+    .music-player h2 {
+        margin: 3px 0;
+        font-size: 16px;
+        color: #5c4935;
+    }
+
+    .music-player p {
+        margin: 2px 0 8px;
+        font-size: 12px;
+        color: #8a7459;
+    }
+
+    .time {
+        display: flex;
+        justify-content: space-between;
+
+        font-size: 10px;
+        color: #8a7459;
+
+        margin-bottom: 4px;
+    }
+
+    .progress-container {
+        width: 100%;
+        height: 5px;
+
+        background: #dccda5;
+        border-radius: 10px;
+
+        cursor: pointer;
+        margin-bottom: 9px;
+
+        overflow: hidden;
+    }
+
+    .progress {
+        height: 100%;
+        width: 0%;
+
+        background: #8b7355;
+        border-radius: 10px;
+    }
+
+    .controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .music-player button {
+        border: none;
+
+        width: 38px;
+        height: 38px;
+
+        border-radius: 50%;
+
+        background: #8b7355;
+        color: white;
+
+        font-size: 15px;
+
+        cursor: pointer;
+
+        transition: transform 0.2s;
+    }
+
+    .music-player button:hover {
+        transform: scale(1.08);
+    }
 
 
-// =========================
-// OPEN LETTER
-// =========================
+    /* =========================
+       MOBILE
+    ========================= */
 
-openButton.addEventListener("click", () => {
+    @media (max-width: 600px) {
 
-    envelope.classList.add("open");
+        .music-player {
+            top: 15px;
 
-    // Small delay for the envelope animation
-    setTimeout(() => {
+            width: 145px;
+            padding: 9px;
 
-        opening.classList.add("hide");
+            border-radius: 12px;
+        }
 
-        letterPage.classList.add("show");
+        .music-player.letter-open {
+            right: 10px;
+            bottom: 10px;
+        }
 
-    }, 900);
+        .album {
+            width: 60px;
+            height: 60px;
+
+            border-radius: 8px;
+
+            margin-bottom: 5px;
+        }
+
+        .music-player h2 {
+            font-size: 13px;
+        }
+
+        .music-player p {
+            font-size: 10px;
+
+            margin-bottom: 6px;
+        }
+
+        .time {
+            font-size: 9px;
+        }
+
+        .progress-container {
+            height: 4px;
+            margin-bottom: 7px;
+        }
+
+        .music-player button {
+            width: 32px;
+            height: 32px;
+
+            font-size: 12px;
+        }
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="particles"></div>
+
+<main class="container">
+
+    <!-- =========================
+         OPENING SCREEN
+    ========================= -->
+
+    <section id="opening" class="opening">
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+
+            <div class="letter-preview">
+                <span>For You</span>
+            </div>
+
+            <div class="flap"></div>
+
+            <div class="envelope-front"></div>
+
+        </div>
+
+        <h1>A little letter for you</h1>
+
+        <p>
+            There are some things I want you to know.
+        </p>
+
+        <button id="openButton">
+            Open My Letter 💌
+        </button>
+
+    </section>
 
 
-    // Try to start music
-    music.play().catch(() => {
-        // Browser may block autoplay.
-        // That's okay.
+    <!-- =========================
+         LETTER
+    ========================= -->
+
+    <section id="letterPage" class="letter-page">
+
+        <div class="paper">
+
+            <div class="paper-decoration">
+                ♡
+            </div>
+
+            <p class="date">
+                September 8, 2026
+            </p>
+
+            <h2>
+                My Dearest Shenna,
+            </h2>
+
+            <div class="letter-content">
+
+                <p>
+                    You are the greatest thing that has been
+                    welcomed into my life.
+                </p>
+
+                <p>
+                    You've always had your struggles, and yet
+                    you have always made the time and effort
+                    to continue loving and being with me every
+                    single day.
+                </p>
+
+                <p>
+                    You mean everything to me. As I come back
+                    to see what we've gone through, I find it
+                    truly astonishing as to what we have
+                    accomplished so far. I am so proud of you,
+                    and I will continue to be your biggest
+                    supporter until the day I die.
+                </p>
+
+                <p>
+                    You have already been more than enough
+                    since the start. You being with me is
+                    already the best thing I could ask for.
+                </p>
+
+                <p>
+                    Whatever happens, I hope you always remember
+                    that you are important, appreciated, and
+                    loved.
+                </p>
+
+                <p>
+                    And if I could ask for one thing, it would
+                    simply be to ask you to love and take
+                    care of yourself.
+                </p>
+
+                <p>
+                    I love you
+                </p>
+
+                <p class="ending">
+                    With all my heart,<br>
+                    <span>Justin ♡</span>
+                </p>
+
+            </div>
+
+            <div class="heart">
+                ♥
+            </div>
+
+        </div>
+
+        <button id="closeButton">
+            Close Letter
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     MUSIC PLAYER
+     TOP → BOTTOM RIGHT
+========================= -->
+
+<div class="music-player" id="musicPlayer">
+
+    <img
+        src="cover.webp"
+        class="album"
+        alt="Album Cover"
+    >
+
+    <h2>
+        With A Smile
+    </h2>
+
+    <p>
+        Eraserheads
+    </p>
+
+    <div class="time">
+
+        <span id="currentTime">
+            0:00
+        </span>
+
+        <span id="duration">
+            0:00
+        </span>
+
+    </div>
+
+    <div
+        class="progress-container"
+        id="progressContainer"
+    >
+
+        <div
+            class="progress"
+            id="progress"
+        ></div>
+
+    </div>
+
+    <div class="controls">
+
+        <button id="playButton">
+            ▶
+        </button>
+
+    </div>
+
+    <audio id="audio">
+
+        <source
+            src="Eraserheads - With A Smile (Lyrics).mp3"
+            type="audio/mpeg"
+        >
+
+    </audio>
+
+</div>
+
+
+<!-- =========================
+     MUSIC PLAYER JAVASCRIPT
+========================= -->
+
+<script>
+
+    const audio =
+        document.getElementById("audio");
+
+    const playButton =
+        document.getElementById("playButton");
+
+    const progress =
+        document.getElementById("progress");
+
+    const progressContainer =
+        document.getElementById("progressContainer");
+
+    const currentTime =
+        document.getElementById("currentTime");
+
+    const duration =
+        document.getElementById("duration");
+
+    const musicPlayer =
+        document.getElementById("musicPlayer");
+
+
+    /* =========================
+       PLAY / PAUSE
+    ========================= */
+
+    playButton.addEventListener("click", () => {
+
+        if (audio.paused) {
+
+            audio.play()
+                .then(() => {
+                    playButton.textContent = "❚❚";
+                })
+                .catch(() => {
+                    console.log("Unable to play audio.");
+                });
+
+        } else {
+
+            audio.pause();
+
+            playButton.textContent = "▶";
+
+        }
+
     });
 
-});
+
+    /* =========================
+       UPDATE PROGRESS
+    ========================= */
+
+    audio.addEventListener("timeupdate", () => {
+
+        if (!audio.duration) return;
+
+        const percent =
+            (audio.currentTime / audio.duration) * 100;
+
+        progress.style.width =
+            percent + "%";
+
+        currentTime.textContent =
+            formatTime(audio.currentTime);
+
+    });
 
 
-// =========================
-// CLOSE LETTER
-// =========================
+    /* =========================
+       SONG DURATION
+    ========================= */
 
-closeButton.addEventListener("click", () => {
+    audio.addEventListener("loadedmetadata", () => {
 
-    letterPage.classList.remove("show");
+        duration.textContent =
+            formatTime(audio.duration);
 
-    setTimeout(() => {
-
-        opening.classList.remove("hide");
-
-        envelope.classList.remove("open");
-
-    }, 700);
-
-});
+    });
 
 
-// =========================
-// FLOATING PARTICLES
-// =========================
+    /* =========================
+       CLICK PROGRESS BAR
+    ========================= */
 
-const particleContainer =
-    document.querySelector(".particles");
+    progressContainer.addEventListener(
+        "click",
+        (event) => {
 
-for (let i = 0; i < 35; i++) {
+            if (!audio.duration) return;
 
-    const particle =
-        document.createElement("div");
+            const rect =
+                progressContainer.getBoundingClientRect();
 
-    particle.classList.add("particle");
+            const clickX =
+                event.clientX - rect.left;
 
-    particle.style.left =
-        Math.random() * 100 + "%";
+            const width =
+                progressContainer.clientWidth;
 
-    particle.style.animationDelay =
-        Math.random() * 8 + "s";
+            audio.currentTime =
+                (clickX / width) * audio.duration;
 
-    particle.style.animationDuration =
-        5 + Math.random() * 7 + "s";
+        }
+    );
 
-    particle.style.width =
-        3 + Math.random() * 5 + "px";
 
-    particle.style.height =
-        particle.style.width;
+    /* =========================
+       SONG ENDED
+    ========================= */
 
-    particleContainer.appendChild(particle);
-}
+    audio.addEventListener("ended", () => {
+
+        playButton.textContent = "▶";
+
+        progress.style.width = "0%";
+
+        currentTime.textContent = "0:00";
+
+    });
+
+
+    /* =========================
+       FORMAT TIME
+    ========================= */
+
+    function formatTime(seconds) {
+
+        if (isNaN(seconds)) {
+            return "0:00";
+        }
+
+        const minutes =
+            Math.floor(seconds / 60);
+
+        const secs =
+            Math.floor(seconds % 60);
+
+        return minutes + ":" +
+            (secs < 10 ? "0" : "") +
+            secs;
+
+    }
+
+</script>
+
+
+<!-- =========================
+     YOUR LETTER JAVASCRIPT
+========================= -->
+
+<script src="script.js"></script>
+```
+
+</body>
+
+</html>
