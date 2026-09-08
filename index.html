@@ -18,8 +18,11 @@
 
     .music-player {
         position: fixed;
-        top: 18px;
-        right: 18px;
+
+        top: 25px;
+        left: 50%;
+
+        transform: translateX(-50%);
 
         width: 190px;
         padding: 12px;
@@ -32,6 +35,24 @@
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.18);
 
         z-index: 9999;
+
+        transition:
+            top 0.6s ease,
+            right 0.6s ease,
+            left 0.6s ease,
+            bottom 0.6s ease,
+            transform 0.6s ease;
+    }
+
+    /* After the letter is opened */
+    .music-player.letter-open {
+        top: auto;
+        left: auto;
+
+        right: 20px;
+        bottom: 20px;
+
+        transform: none;
     }
 
     .album {
@@ -140,14 +161,18 @@
     @media (max-width: 600px) {
 
         .music-player {
-            top: 10px;
-            right: 10px;
+            top: 15px;
 
             width: 145px;
 
             padding: 9px;
 
             border-radius: 12px;
+        }
+
+        .music-player.letter-open {
+            right: 10px;
+            bottom: 10px;
         }
 
         .album {
@@ -320,10 +345,9 @@
 
 <!-- =========================
      MUSIC PLAYER
-     ALWAYS VISIBLE
 ========================= -->
 
-<div class="music-player">
+<div class="music-player" id="musicPlayer">
 
     <img
         src="cover.webp"
@@ -351,7 +375,6 @@
 
     </div>
 
-
     <div
         class="progress-container"
         id="progressContainer"
@@ -364,7 +387,6 @@
 
     </div>
 
-
     <div class="controls">
 
         <button id="playButton">
@@ -372,9 +394,6 @@
         </button>
 
     </div>
-
-
-    <!-- YOUR ONE SONG -->
 
     <audio id="audio">
 
@@ -411,6 +430,9 @@
 
     const duration =
         document.getElementById("duration");
+
+    const musicPlayer =
+        document.getElementById("musicPlayer");
 
 
     /* =========================
@@ -510,6 +532,31 @@
 
 
     /* =========================
+       MOVE PLAYER WHEN LETTER OPENS
+    ========================= */
+
+    const openButton =
+        document.getElementById("openButton");
+
+    const closeButton =
+        document.getElementById("closeButton");
+
+
+    openButton.addEventListener("click", () => {
+
+        musicPlayer.classList.add("letter-open");
+
+    });
+
+
+    closeButton.addEventListener("click", () => {
+
+        musicPlayer.classList.remove("letter-open");
+
+    });
+
+
+    /* =========================
        FORMAT TIME
     ========================= */
 
@@ -534,9 +581,7 @@
 </script>
 
 
-<!-- =========================
-     YOUR EXISTING JAVASCRIPT
-========================= -->
+<!-- YOUR EXISTING JAVASCRIPT -->
 
 <script src="script.js"></script>
 ```
