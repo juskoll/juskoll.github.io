@@ -12,24 +12,20 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-
-    /* =====================================================
+    /* =========================
        MUSIC PLAYER
-    ===================================================== */
+    ========================= */
 
     .music-player {
         position: fixed;
-
         top: 25px;
         left: 50%;
-
         transform: translateX(-50%);
 
         width: 190px;
         padding: 12px;
 
         background: #fff8df;
-
         border-radius: 14px;
 
         text-align: center;
@@ -41,10 +37,10 @@
         transition: all 0.7s ease;
     }
 
+    /* Move to bottom-right when letter opens */
     .music-player.letter-open {
         top: auto;
         left: auto;
-
         right: 20px;
         bottom: 20px;
 
@@ -94,6 +90,7 @@
 
     .progress-container {
         width: 100%;
+
         height: 5px;
 
         background: #dccda5;
@@ -109,6 +106,7 @@
 
     .progress {
         height: 100%;
+
         width: 0%;
 
         background: #8b7355;
@@ -120,6 +118,7 @@
         display: flex;
 
         justify-content: center;
+
         align-items: center;
     }
 
@@ -138,8 +137,6 @@
         font-size: 15px;
 
         cursor: pointer;
-
-        transition: transform 0.2s;
     }
 
     .music-player button:hover {
@@ -147,618 +144,9 @@
     }
 
 
-    /* =====================================================
-       BOUQUET
-    ===================================================== */
-
-    .bouquet {
-        position: relative;
-
-        width: 330px;
-        height: 260px;
-
-        margin: 0 auto 5px;
-
-        opacity: 0;
-
-        transform:
-            translateY(80px)
-            scale(0.55);
-
-        pointer-events: none;
-
-        z-index: 10;
-
-        transition:
-            opacity 0.7s ease,
-            transform 1s cubic-bezier(.17,.67,.32,1.25);
-    }
-
-    /* Bouquet appears when letter opens */
-
-    .letter-page.show .bouquet {
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(0.9);
-    }
-
-
-    /* =====================================================
-       FLOWERS
-    ===================================================== */
-
-    .flowers {
-        position: absolute;
-
-        width: 100%;
-        height: 220px;
-
-        left: 0;
-        top: 0;
-    }
-
-
-    /* =====================================================
-       GERBERAS
-    ===================================================== */
-
-    .gerbera {
-        position: absolute;
-
-        width: 62px;
-        height: 62px;
-
-        transform-origin: center bottom;
-    }
-
-    .gerbera-one {
-        left: 65px;
-        top: 40px;
-
-        transform: rotate(-15deg);
-    }
-
-    .gerbera-two {
-        right: 65px;
-        top: 45px;
-
-        transform: rotate(15deg);
-    }
-
-    .petals {
-        position: absolute;
-
-        width: 100%;
-        height: 100%;
-    }
-
-    .petals i {
-        position: absolute;
-
-        width: 17px;
-        height: 31px;
-
-        left: 23px;
-        top: 0;
-
-        background: #f4d99b;
-
-        border-radius:
-            50% 50% 45% 45%;
-
-        transform-origin:
-            8px 31px;
-    }
-
-    .petals i:nth-child(1) {
-        transform: rotate(0deg);
-    }
-
-    .petals i:nth-child(2) {
-        transform: rotate(45deg);
-    }
-
-    .petals i:nth-child(3) {
-        transform: rotate(90deg);
-    }
-
-    .petals i:nth-child(4) {
-        transform: rotate(135deg);
-    }
-
-    .petals i:nth-child(5) {
-        transform: rotate(180deg);
-    }
-
-    .petals i:nth-child(6) {
-        transform: rotate(225deg);
-    }
-
-    .petals i:nth-child(7) {
-        transform: rotate(270deg);
-    }
-
-    .petals i:nth-child(8) {
-        transform: rotate(315deg);
-    }
-
-    .flower-center {
-        position: absolute;
-
-        width: 21px;
-        height: 21px;
-
-        left: 20px;
-        top: 20px;
-
-        border-radius: 50%;
-
-        background: #cda35e;
-
-        box-shadow:
-            inset 0 0 0 5px #e3c477;
-    }
-
-
-    /* =====================================================
-       TULIPS
-    ===================================================== */
-
-    .tulip {
-        position: absolute;
-
-        width: 55px;
-        height: 75px;
-    }
-
-    .tulip-one {
-        left: 118px;
-        top: 48px;
-
-        transform: rotate(-7deg);
-    }
-
-    .tulip-two {
-        left: 155px;
-        top: 25px;
-
-        transform: rotate(1deg);
-    }
-
-    .tulip-three {
-        right: 110px;
-        top: 55px;
-
-        transform: rotate(8deg);
-    }
-
-    .tulip-head {
-        position: relative;
-
-        width: 45px;
-        height: 48px;
-
-        margin: auto;
-    }
-
-    .tulip-head span {
-        position: absolute;
-
-        bottom: 0;
-
-        width: 30px;
-        height: 43px;
-
-        background: #f5dba3;
-
-        border-radius:
-            50% 50% 45% 45%;
-    }
-
-    .tulip-head span:nth-child(1) {
-        left: 0;
-
-        transform: rotate(-18deg);
-    }
-
-    .tulip-head span:nth-child(2) {
-        left: 8px;
-
-        z-index: 2;
-
-        background: #f8e3ad;
-    }
-
-    .tulip-head span:nth-child(3) {
-        right: 0;
-
-        transform: rotate(18deg);
-    }
-
-
-    /* =====================================================
-       LILIES
-    ===================================================== */
-
-    .lily {
-        position: absolute;
-
-        width: 75px;
-        height: 75px;
-    }
-
-    .lily-one {
-        left: 15px;
-        top: 82px;
-
-        transform: rotate(-18deg);
-    }
-
-    .lily-two {
-        right: 15px;
-        top: 90px;
-
-        transform: rotate(18deg);
-    }
-
-    .lily-petals {
-        position: relative;
-
-        width: 70px;
-        height: 70px;
-    }
-
-    .lily-petals span {
-        position: absolute;
-
-        width: 25px;
-        height: 50px;
-
-        left: 23px;
-        top: 8px;
-
-        background: #fff0c8;
-
-        border-radius:
-            70% 30% 70% 30%;
-
-        transform-origin:
-            center bottom;
-    }
-
-    .lily-petals span:nth-child(1) {
-        transform: rotate(0deg);
-    }
-
-    .lily-petals span:nth-child(2) {
-        transform: rotate(60deg);
-    }
-
-    .lily-petals span:nth-child(3) {
-        transform: rotate(120deg);
-    }
-
-    .lily-petals span:nth-child(4) {
-        transform: rotate(180deg);
-    }
-
-    .lily-petals span:nth-child(5) {
-        transform: rotate(240deg);
-    }
-
-    .lily-petals span:nth-child(6) {
-        transform: rotate(300deg);
-    }
-
-    .lily-center {
-        position: absolute;
-
-        width: 20px;
-        height: 20px;
-
-        left: 27px;
-        top: 27px;
-    }
-
-    .lily-center b {
-        position: absolute;
-
-        width: 4px;
-        height: 16px;
-
-        background: #d0a55e;
-
-        border-radius: 50%;
-
-        transform-origin:
-            bottom center;
-    }
-
-    .lily-center b:nth-child(1) {
-        transform: rotate(-25deg);
-    }
-
-    .lily-center b:nth-child(2) {
-        transform: rotate(0deg);
-    }
-
-    .lily-center b:nth-child(3) {
-        transform: rotate(25deg);
-    }
-
-
-    /* =====================================================
-       SMALL FLOWERS
-    ===================================================== */
-
-    .tiny-flower {
-        position: absolute;
-
-        color: #efd28e;
-
-        font-size: 22px;
-
-        text-shadow:
-            0 1px 2px rgba(0, 0, 0, 0.08);
-    }
-
-    .tiny-one {
-        left: 55px;
-        top: 72px;
-    }
-
-    .tiny-two {
-        left: 105px;
-        top: 105px;
-    }
-
-    .tiny-three {
-        right: 90px;
-        top: 82px;
-    }
-
-    .tiny-four {
-        right: 48px;
-        top: 120px;
-    }
-
-
-    /* =====================================================
-       LEAVES
-    ===================================================== */
-
-    .leaf {
-        position: absolute;
-
-        width: 20px;
-        height: 45px;
-
-        background: #b7c79a;
-
-        border-radius:
-            100% 0 100% 0;
-
-        transform-origin:
-            bottom center;
-    }
-
-    .leaf-one {
-        left: 62px;
-        top: 125px;
-
-        transform: rotate(-48deg);
-    }
-
-    .leaf-two {
-        left: 120px;
-        top: 145px;
-
-        transform: rotate(-70deg);
-    }
-
-    .leaf-three {
-        right: 62px;
-        top: 130px;
-
-        transform: rotate(48deg);
-    }
-
-    .leaf-four {
-        right: 120px;
-        top: 148px;
-
-        transform: rotate(70deg);
-    }
-
-
-    /* =====================================================
-       STEMS
-    ===================================================== */
-
-    .stems {
-        position: absolute;
-
-        width: 150px;
-        height: 100px;
-
-        left: 90px;
-        top: 105px;
-    }
-
-    .stems span {
-        position: absolute;
-
-        width: 3px;
-        height: 125px;
-
-        left: 75px;
-        top: 0;
-
-        background: #91a878;
-
-        transform-origin:
-            top center;
-    }
-
-    .stems span:nth-child(1) {
-        transform: rotate(-25deg);
-    }
-
-    .stems span:nth-child(2) {
-        transform: rotate(-17deg);
-    }
-
-    .stems span:nth-child(3) {
-        transform: rotate(-8deg);
-    }
-
-    .stems span:nth-child(4) {
-        transform: rotate(0deg);
-    }
-
-    .stems span:nth-child(5) {
-        transform: rotate(8deg);
-    }
-
-    .stems span:nth-child(6) {
-        transform: rotate(17deg);
-    }
-
-    .stems span:nth-child(7) {
-        transform: rotate(25deg);
-    }
-
-
-    /* =====================================================
-       WRAPPING PAPER
-    ===================================================== */
-
-    .bouquet-wrap {
-        position: absolute;
-
-        width: 170px;
-        height: 90px;
-
-        left: 80px;
-        bottom: 0;
-
-        background: #f5e5b8;
-
-        clip-path: polygon(
-            8% 0%,
-            92% 0%,
-            72% 100%,
-            28% 100%
-        );
-
-        box-shadow:
-            0 8px 15px rgba(0, 0, 0, 0.12);
-    }
-
-    .wrap-fold {
-        position: absolute;
-
-        width: 100%;
-        height: 100%;
-
-        background:
-            rgba(255, 255, 255, 0.28);
-
-        clip-path: polygon(
-            50% 0%,
-            100% 0%,
-            72% 100%,
-            50% 100%
-        );
-    }
-
-
-    /* =====================================================
-       FLOWER ANIMATION
-    ===================================================== */
-
-    .letter-page.show .gerbera,
-    .letter-page.show .tulip,
-    .letter-page.show .lily,
-    .letter-page.show .tiny-flower,
-    .letter-page.show .leaf {
-
-        animation:
-            flowerAppear 0.8s ease both;
-    }
-
-    .letter-page.show .gerbera-one {
-        animation-delay: 0.1s;
-    }
-
-    .letter-page.show .gerbera-two {
-        animation-delay: 0.2s;
-    }
-
-    .letter-page.show .tulip-one {
-        animation-delay: 0.3s;
-    }
-
-    .letter-page.show .tulip-two {
-        animation-delay: 0.2s;
-    }
-
-    .letter-page.show .tulip-three {
-        animation-delay: 0.4s;
-    }
-
-    .letter-page.show .lily-one {
-        animation-delay: 0.3s;
-    }
-
-    .letter-page.show .lily-two {
-        animation-delay: 0.45s;
-    }
-
-    .letter-page.show .tiny-flower {
-        animation-delay: 0.55s;
-    }
-
-    .letter-page.show .leaf {
-        animation-delay: 0.5s;
-    }
-
-    @keyframes flowerAppear {
-
-        0% {
-            opacity: 0;
-
-            transform:
-                translateY(35px)
-                scale(0.3)
-                rotate(-12deg);
-        }
-
-        70% {
-            opacity: 1;
-
-            transform:
-                translateY(-5px)
-                scale(1.08)
-                rotate(3deg);
-        }
-
-        100% {
-            opacity: 1;
-
-            transform:
-                translateY(0)
-                scale(1)
-                rotate(0deg);
-        }
-    }
-
-
-    /* =====================================================
+    /* =========================
        MOBILE
-    ===================================================== */
+    ========================= */
 
     @media (max-width: 600px) {
 
@@ -802,19 +190,7 @@
 
             font-size: 12px;
         }
-
-        .bouquet {
-            width: 280px;
-            height: 230px;
-        }
-
-        .letter-page.show .bouquet {
-            transform:
-                translateY(0)
-                scale(0.75);
-        }
     }
-
 </style>
 ```
 
@@ -827,10 +203,9 @@
 
 <main class="container">
 
-
-    <!-- =====================================================
+    <!-- =========================
          OPENING SCREEN
-    ===================================================== -->
+    ========================= -->
 
     <section id="opening" class="opening">
 
@@ -848,7 +223,6 @@
 
         </div>
 
-
         <h1>
             A little letter for you
         </h1>
@@ -857,247 +231,165 @@
             There are some things I want you to know.
         </p>
 
-
-        <button
-            id="openButton"
-            type="button"
-        >
+        <button id="openButton" type="button">
             Open My Letter 💌
         </button>
 
     </section>
 
 
-
-    <!-- =====================================================
-         LETTER PAGE
-    ===================================================== -->
-
-    <section
-        id="letterPage"
-        class="letter-page"
-    >
-
-
-        <!-- =================================================
-             BOUQUET
-        ================================================= -->
-
-        <div
-            class="bouquet"
-            id="bouquet"
-        >
-
-            <div class="flowers">
-
-
-                <!-- GERBERA -->
-
-                <div class="flower gerbera gerbera-one">
-
-                    <div class="petals">
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </div>
-
-                    <div class="flower-center"></div>
-
-                </div>
-
-
-                <!-- GERBERA -->
-
-                <div class="flower gerbera gerbera-two">
-
-                    <div class="petals">
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                        <i></i>
-                    </div>
-
-                    <div class="flower-center"></div>
-
-                </div>
-
-
-                <!-- TULIP -->
-
-                <div class="flower tulip tulip-one">
-
-                    <div class="tulip-head">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-                <!-- TULIP -->
-
-                <div class="flower tulip tulip-two">
-
-                    <div class="tulip-head">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-                <!-- TULIP -->
-
-                <div class="flower tulip tulip-three">
-
-                    <div class="tulip-head">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                </div>
-
-
-                <!-- LILY -->
-
-                <div class="flower lily lily-one">
-
-                    <div class="lily-petals">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-                    <div class="lily-center">
-
-                        <b></b>
-                        <b></b>
-                        <b></b>
-
-                    </div>
-
-                </div>
-
-
-                <!-- LILY -->
-
-                <div class="flower lily lily-two">
-
-                    <div class="lily-petals">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-                    <div class="lily-center">
-
-                        <b></b>
-                        <b></b>
-                        <b></b>
-
-                    </div>
-
-                </div>
-
-
-                <!-- SMALL FLOWERS -->
-
-                <div class="tiny-flower tiny-one">
-                    ✿
-                </div>
-
-                <div class="tiny-flower tiny-two">
-                    ✿
-                </div>
-
-                <div class="tiny-flower tiny-three">
-                    ✿
-                </div>
-
-                <div class="tiny-flower tiny-four">
-                    ✿
-                </div>
-
-
-                <!-- LEAVES -->
-
-                <div class="leaf leaf-one"></div>
-                <div class="leaf leaf-two"></div>
-                <div class="leaf leaf-three"></div>
-                <div class="leaf leaf-four"></div>
-
-            </div>
-
-
-            <!-- STEMS -->
-
-            <div class="stems">
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-
-            <!-- WRAPPING -->
-
-            <div class="bouquet-wrap">
-
-                <div class="wrap-fold"></div>
-
-            </div>
-
+    <!-- =========================
+         LETTER
+    ========================= -->
+
+    <section id="letterPage" class="letter-page">
+
+   <!-- =========================
+     FLOWER BOUQUET
+     ========================= -->
+
+<div class="bouquet" id="bouquet">
+
+```
+<div class="flowers">
+
+    <!-- GERBERA 1 -->
+    <div class="flower gerbera gerbera-one">
+        <div class="petals">
+            <i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i>
+        </div>
+        <div class="flower-center"></div>
+    </div>
+
+    <!-- GERBERA 2 -->
+    <div class="flower gerbera gerbera-two">
+        <div class="petals">
+            <i></i><i></i><i></i><i></i>
+            <i></i><i></i><i></i><i></i>
+        </div>
+        <div class="flower-center"></div>
+    </div>
+
+
+    <!-- TULIP 1 -->
+    <div class="flower tulip tulip-one">
+        <div class="tulip-head">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- TULIP 2 -->
+    <div class="flower tulip tulip-two">
+        <div class="tulip-head">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <!-- TULIP 3 -->
+    <div class="flower tulip tulip-three">
+        <div class="tulip-head">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+
+    <!-- LILY 1 -->
+    <div class="flower lily lily-one">
+        <div class="lily-petals">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
+        <div class="lily-center">
+            <b></b>
+            <b></b>
+            <b></b>
+        </div>
+    </div>
 
 
-        <!-- =================================================
-             LETTER PAPER
-        ================================================= -->
+    <!-- LILY 2 -->
+    <div class="flower lily lily-two">
+        <div class="lily-petals">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
 
+        <div class="lily-center">
+            <b></b>
+            <b></b>
+            <b></b>
+        </div>
+    </div>
+
+
+    <!-- SMALL FLOWERS -->
+    <div class="tiny-flower tiny-one">✿</div>
+    <div class="tiny-flower tiny-two">✿</div>
+    <div class="tiny-flower tiny-three">✿</div>
+    <div class="tiny-flower tiny-four">✿</div>
+
+
+    <!-- LEAVES -->
+    <div class="leaf leaf-one"></div>
+    <div class="leaf leaf-two"></div>
+    <div class="leaf leaf-three"></div>
+    <div class="leaf leaf-four"></div>
+
+</div>
+
+
+<!-- STEMS -->
+
+<div class="stems">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+
+<!-- WRAPPING PAPER -->
+
+<div class="bouquet-wrap">
+    <div class="wrap-fold"></div>
+</div>
+```
+
+</div>
+
+        
         <div class="paper">
 
             <div class="paper-decoration">
                 ♡
             </div>
 
-
             <p class="date">
                 September 8, 2026
             </p>
 
-
             <h2>
                 My Dearest Shenna,
             </h2>
-
 
             <div class="letter-content">
 
@@ -1106,14 +398,12 @@
                     welcomed into my life.
                 </p>
 
-
                 <p>
                     You've always had your struggles, and yet
                     you have always made the time and effort
                     to continue loving and being with me every
                     single day.
                 </p>
-
 
                 <p>
                     You mean everything to me. As I come back
@@ -1124,13 +414,11 @@
                     supporter until the day I die.
                 </p>
 
-
                 <p>
                     You have already been more than enough
                     since the start. You being with me is
                     already the best thing I could ask for.
                 </p>
-
 
                 <p>
                     Whatever happens, I hope you always remember
@@ -1138,31 +426,22 @@
                     loved.
                 </p>
 
-
                 <p>
                     And if I could ask for one thing, it would
                     simply be to ask you to love and take
                     care of yourself.
                 </p>
 
-
                 <p>
                     I love you
                 </p>
 
-
                 <p class="ending">
-
                     With all my heart,<br>
-
-                    <span>
-                        Justin ♡
-                    </span>
-
+                    <span>Justin ♡</span>
                 </p>
 
             </div>
-
 
             <div class="heart">
                 ♥
@@ -1170,11 +449,7 @@
 
         </div>
 
-
-        <button
-            id="closeButton"
-            type="button"
-        >
+        <button id="closeButton" type="button">
             Close Letter
         </button>
 
@@ -1183,10 +458,9 @@
 </main>
 
 
-
-<!-- =====================================================
+<!-- =========================
      MUSIC PLAYER
-===================================================== -->
+     ========================= -->
 
 <div
     class="music-player"
@@ -1199,16 +473,13 @@
         alt="Album Cover"
     >
 
-
     <h2>
         With A Smile
     </h2>
 
-
     <p>
         Eraserheads
     </p>
-
 
     <div class="time">
 
@@ -1222,7 +493,6 @@
 
     </div>
 
-
     <div
         class="progress-container"
         id="progressContainer"
@@ -1235,7 +505,6 @@
 
     </div>
 
-
     <div class="controls">
 
         <button
@@ -1246,7 +515,6 @@
         </button>
 
     </div>
-
 
     <audio id="audio">
 
@@ -1260,17 +528,15 @@
 </div>
 
 
-
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+<!-- =========================
+     ALL JAVASCRIPT
+     ========================= -->
 
 <script>
 
-
-    /* =====================================================
-       ELEMENTS
-    ===================================================== */
+    /* =========================
+       GET ELEMENTS
+       ========================= */
 
     const envelope =
         document.getElementById("envelope");
@@ -1309,162 +575,121 @@
         document.getElementById("duration");
 
 
-
-    /* =====================================================
+    /* =========================
        OPEN LETTER
-    ===================================================== */
+    ========================= */
 
-    openButton.addEventListener(
-        "click",
-        function () {
+    openButton.addEventListener("click", function () {
 
-            envelope.classList.add("open");
+        console.log("Open button clicked");
 
-            musicPlayer.classList.add(
-                "letter-open"
-            );
+        // Open envelope
+        envelope.classList.add("open");
 
+        // Move music player
+        musicPlayer.classList.add("letter-open");
 
-            setTimeout(
-                function () {
+        // Wait for envelope animation
+        setTimeout(function () {
 
-                    opening.classList.add("hide");
+            opening.classList.add("hide");
 
-                    letterPage.classList.add("show");
+            letterPage.classList.add("show");
 
-                },
-                900
-            );
+        }, 900);
 
-        }
-    );
+    });
 
 
-
-    /* =====================================================
+    /* =========================
        CLOSE LETTER
-    ===================================================== */
+    ========================= */
 
-    closeButton.addEventListener(
-        "click",
-        function () {
+    closeButton.addEventListener("click", function () {
 
-            letterPage.classList.remove("show");
+        letterPage.classList.remove("show");
 
-            musicPlayer.classList.remove(
-                "letter-open"
-            );
+        musicPlayer.classList.remove("letter-open");
 
+        setTimeout(function () {
 
-            setTimeout(
-                function () {
+            opening.classList.remove("hide");
 
-                    opening.classList.remove("hide");
+            envelope.classList.remove("open");
 
-                    envelope.classList.remove("open");
+        }, 700);
 
-                },
-                700
-            );
-
-        }
-    );
+    });
 
 
-
-    /* =====================================================
+    /* =========================
        PLAY / PAUSE
-    ===================================================== */
+    ========================= */
 
-    playButton.addEventListener(
-        "click",
-        function () {
+    playButton.addEventListener("click", function () {
 
-            if (audio.paused) {
+        if (audio.paused) {
 
-                audio.play()
-                    .then(
-                        function () {
+            audio.play()
+                .then(function () {
 
-                            playButton.textContent =
-                                "❚❚";
+                    playButton.textContent = "❚❚";
 
-                        }
-                    )
-                    .catch(
-                        function () {
+                })
+                .catch(function () {
 
-                            console.log(
-                                "Audio playback was blocked."
-                            );
-
-                        }
+                    console.log(
+                        "The browser blocked audio playback."
                     );
 
-            } else {
+                });
 
-                audio.pause();
+        } else {
 
-                playButton.textContent =
-                    "▶";
+            audio.pause();
 
-            }
-
-        }
-    );
-
-
-
-    /* =====================================================
-       PROGRESS
-    ===================================================== */
-
-    audio.addEventListener(
-        "timeupdate",
-        function () {
-
-            if (!audio.duration) return;
-
-            const percent =
-                (audio.currentTime /
-                    audio.duration) * 100;
-
-
-            progress.style.width =
-                percent + "%";
-
-
-            currentTime.textContent =
-                formatTime(
-                    audio.currentTime
-                );
+            playButton.textContent = "▶";
 
         }
-    );
+
+    });
 
 
+    /* =========================
+       UPDATE PROGRESS
+    ========================= */
 
-    /* =====================================================
-       DURATION
-    ===================================================== */
+    audio.addEventListener("timeupdate", function () {
 
-    audio.addEventListener(
-        "loadedmetadata",
-        function () {
+        if (!audio.duration) return;
 
-            duration.textContent =
-                formatTime(
-                    audio.duration
-                );
+        const percent =
+            (audio.currentTime / audio.duration) * 100;
 
-        }
-    );
+        progress.style.width =
+            percent + "%";
 
+        currentTime.textContent =
+            formatTime(audio.currentTime);
+
+    });
 
 
-    /* =====================================================
-       SEEK
-    ===================================================== */
+    /* =========================
+       LOAD DURATION
+    ========================= */
+
+    audio.addEventListener("loadedmetadata", function () {
+
+        duration.textContent =
+            formatTime(audio.duration);
+
+    });
+
+
+    /* =========================
+       SEEK SONG
+    ========================= */
 
     progressContainer.addEventListener(
         "click",
@@ -1473,52 +698,39 @@
             if (!audio.duration) return;
 
             const rect =
-                progressContainer
-                    .getBoundingClientRect();
-
+                progressContainer.getBoundingClientRect();
 
             const clickX =
                 event.clientX - rect.left;
 
-
             const width =
                 progressContainer.clientWidth;
 
-
             audio.currentTime =
-                (clickX / width) *
-                audio.duration;
+                (clickX / width) * audio.duration;
 
         }
     );
 
 
-
-    /* =====================================================
+    /* =========================
        SONG ENDED
-    ===================================================== */
+    ========================= */
 
-    audio.addEventListener(
-        "ended",
-        function () {
+    audio.addEventListener("ended", function () {
 
-            playButton.textContent =
-                "▶";
+        playButton.textContent = "▶";
 
-            progress.style.width =
-                "0%";
+        progress.style.width = "0%";
 
-            currentTime.textContent =
-                "0:00";
+        currentTime.textContent = "0:00";
 
-        }
-    );
+    });
 
 
-
-    /* =====================================================
+    /* =========================
        FORMAT TIME
-    ===================================================== */
+    ========================= */
 
     function formatTime(seconds) {
 
@@ -1526,74 +738,51 @@
             return "0:00";
         }
 
-
         const minutes =
             Math.floor(seconds / 60);
-
 
         const secondsLeft =
             Math.floor(seconds % 60);
 
-
-        return minutes +
-            ":" +
+        return minutes + ":" +
             (secondsLeft < 10 ? "0" : "") +
             secondsLeft;
 
     }
 
 
-
-    /* =====================================================
+    /* =========================
        FLOATING PARTICLES
-    ===================================================== */
+    ========================= */
 
     const particleContainer =
-        document.querySelector(
-            ".particles"
-        );
-
+        document.querySelector(".particles");
 
     if (particleContainer) {
 
-        for (
-            let i = 0;
-            i < 35;
-            i++
-        ) {
+        for (let i = 0; i < 35; i++) {
 
             const particle =
                 document.createElement("div");
 
-
-            particle.classList.add(
-                "particle"
-            );
-
+            particle.classList.add("particle");
 
             particle.style.left =
                 Math.random() * 100 + "%";
 
-
             particle.style.animationDelay =
                 Math.random() * 8 + "s";
-
 
             particle.style.animationDuration =
                 5 + Math.random() * 7 + "s";
 
-
             particle.style.width =
                 3 + Math.random() * 5 + "px";
-
 
             particle.style.height =
                 particle.style.width;
 
-
-            particleContainer.appendChild(
-                particle
-            );
+            particleContainer.appendChild(particle);
 
         }
 
