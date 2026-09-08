@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +9,89 @@
     <title>A Letter For You 💌</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* =========================
+           MUSIC PLAYER
+        ========================= */
+
+        .music-player {
+            width: 300px;
+            margin: 40px auto;
+            padding: 25px;
+            background: #fff8df;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .album {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 20px;
+            border-radius: 15px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .music-player h2 {
+            margin: 5px 0;
+            color: #5c4935;
+        }
+
+        .music-player p {
+            margin: 5px 0 20px;
+            color: #8a7459;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #dccda5;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0%;
+            background: #8b7355;
+            border-radius: 10px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .music-player button {
+            border: none;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: #8b7355;
+            color: white;
+            font-size: 22px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .music-player button:hover {
+            transform: scale(1.05);
+        }
+
+        .time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: #8a7459;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
+
 
 <body>
 
@@ -15,7 +99,10 @@
 
     <main class="container">
 
-        <!-- Opening Screen -->
+        <!-- =========================
+             OPENING SCREEN
+        ========================= -->
+
         <section id="opening" class="opening">
 
             <div class="envelope" id="envelope">
@@ -43,7 +130,10 @@
         </section>
 
 
-        <!-- Letter -->
+        <!-- =========================
+             LETTER
+        ========================= -->
+
         <section id="letterPage" class="letter-page">
 
             <div class="paper">
@@ -57,15 +147,15 @@
                 <div class="letter-content">
 
                     <p>
-                        You are the greatest thing that has been 
-                        welcomed into my life
+                        You are the greatest thing that has been
+                        welcomed into my life.
                     </p>
 
                     <p>
                         You've always had your struggles, and yet
                         you have always made the time and effort
                         to continue loving and being with me every
-                        single day
+                        single day.
                     </p>
 
                     <p>
@@ -73,13 +163,13 @@
                         to see what we've gone through, I find it
                         truly astonishing as to what we have
                         accomplished so far. I am so proud of you,
-                        and I will continue to be your biggest 
+                        and I will continue to be your biggest
                         supporter until the day I die.
                     </p>
 
                     <p>
                         You have already been more than enough
-                        since the start. You being with me is 
+                        since the start. You being with me is
                         already the best thing I could ask for.
                     </p>
 
@@ -91,14 +181,13 @@
 
                     <p>
                         And if I could ask for one thing, it would
-                        simply be to ask you to love and and take 
+                        simply be to ask you to love and take
                         care of yourself.
                     </p>
-                    
+
                     <p>
                         I love you
                     </p>
-
 
                     <p class="ending">
                         With all my heart,<br>
@@ -115,196 +204,201 @@
                 Close Letter
             </button>
 
+
+            <!-- =========================
+                 MUSIC PLAYER
+            ========================= -->
+
+            <div class="music-player">
+
+                <img
+                    src="cover.jpg"
+                    class="album"
+                    alt="Album Cover"
+                >
+
+                <h2>With A Smile</h2>
+
+                <p>Eraserheads</p>
+
+
+                <div class="time">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+
+
+                <div
+                    class="progress-container"
+                    id="progressContainer"
+                >
+                    <div
+                        class="progress"
+                        id="progress"
+                    ></div>
+                </div>
+
+
+                <div class="controls">
+
+                    <button id="playButton">
+                        ▶
+                    </button>
+
+                </div>
+
+
+                <!-- YOUR ONE SONG -->
+
+                <audio id="audio">
+                    <source
+                        src="Eraserheads - With A Smile (Lyrics).mp3"
+                        type="audio/mpeg"
+                    >
+                </audio>
+
+            </div>
+
         </section>
 
     </main>
 
 
-    <!-- Optional Music -->
-    <audio id="music" loop>
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Music Player</title>
+    <script>
 
-  <style>
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f5e7b8;
-      font-family: Arial, sans-serif;
-    }
+        const audio = document.getElementById("audio");
 
-    .music-player {
-      width: 300px;
-      padding: 25px;
-      background: #fff8df;
-      border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
+        const playButton =
+            document.getElementById("playButton");
 
-    .album {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 20px;
-      border-radius: 15px;
-      object-fit: cover;
-    }
+        const progress =
+            document.getElementById("progress");
 
-    h2 {
-      margin: 5px 0;
-      color: #5c4935;
-    }
+        const progressContainer =
+            document.getElementById("progressContainer");
 
-    p {
-      margin: 5px 0 20px;
-      color: #8a7459;
-    }
+        const currentTime =
+            document.getElementById("currentTime");
 
-    .progress-container {
-      width: 100%;
-      height: 6px;
-      background: #dccda5;
-      border-radius: 10px;
-      cursor: pointer;
-      margin-bottom: 15px;
-    }
+        const duration =
+            document.getElementById("duration");
 
-    .progress {
-      height: 100%;
-      width: 0%;
-      background: #8b7355;
-      border-radius: 10px;
-    }
 
-    .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+        /* PLAY / PAUSE */
 
-    button {
-      border: none;
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: #8b7355;
-      color: white;
-      font-size: 22px;
-      cursor: pointer;
-    }
+        playButton.addEventListener("click", () => {
 
-    button:hover {
-      transform: scale(1.05);
-    }
+            if (audio.paused) {
 
-    .time {
-      display: flex;
-      justify-content: space-between;
-      font-size: 12px;
-      color: #8a7459;
-      margin-bottom: 5px;
-    }
-  </style>
-</head>
+                audio.play();
 
-<body>
+                playButton.textContent = "❚❚";
 
-  <div class="music-player">
+            } else {
 
-    <!-- Change this to your own album/photo -->
-    <img src="cover.jpg" class="album" alt="Album Cover">
+                audio.pause();
 
-    <!-- Change these directly -->
-    <h2>Our Song</h2>
-    <p>My Special Song</p>
+                playButton.textContent = "▶";
 
-    <div class="time">
-      <span id="currentTime">0:00</span>
-      <span id="duration">0:00</span>
-    </div>
+            }
 
-    <div class="progress-container" id="progressContainer">
-      <div class="progress" id="progress"></div>
-    </div>
+        });
 
-    <div class="controls">
-      <button id="playButton">▶</button>
-    </div>
 
-    <!-- ONLY SONG -->
-    <audio id="audio" src="Eraserheads - With A Smile (Lyrics).mp3"></audio>
+        /* UPDATE PROGRESS */
 
-  </div>
+        audio.addEventListener("timeupdate", () => {
 
-  <script>
-    const audio = document.getElementById("audio");
-    const playButton = document.getElementById("playButton");
-    const progress = document.getElementById("progress");
-    const progressContainer = document.getElementById("progressContainer");
-    const currentTime = document.getElementById("currentTime");
-    const duration = document.getElementById("duration");
+            if (!audio.duration) return;
 
-    // Play / Pause
-    playButton.addEventListener("click", () => {
-      if (audio.paused) {
-        audio.play();
-        playButton.textContent = "❚❚";
-      } else {
-        audio.pause();
-        playButton.textContent = "▶";
-      }
-    });
+            const percent =
+                (audio.currentTime / audio.duration) * 100;
 
-    // Update progress bar
-    audio.addEventListener("timeupdate", () => {
-      const percent = (audio.currentTime / audio.duration) * 100;
-      progress.style.width = percent + "%";
+            progress.style.width =
+                percent + "%";
 
-      currentTime.textContent = formatTime(audio.currentTime);
-    });
+            currentTime.textContent =
+                formatTime(audio.currentTime);
 
-    // Get song duration
-    audio.addEventListener("loadedmetadata", () => {
-      duration.textContent = formatTime(audio.duration);
-    });
+        });
 
-    // Click progress bar to seek
-    progressContainer.addEventListener("click", (event) => {
-      const width = progressContainer.clientWidth;
-      const clickX = event.offsetX;
 
-      audio.currentTime = (clickX / width) * audio.duration;
-    });
+        /* SONG DURATION */
 
-    // Reset button when song ends
-    audio.addEventListener("ended", () => {
-      playButton.textContent = "▶";
-      progress.style.width = "0%";
-    });
+        audio.addEventListener("loadedmetadata", () => {
 
-    function formatTime(seconds) {
-      if (isNaN(seconds)) return "0:00";
+            duration.textContent =
+                formatTime(audio.duration);
 
-      const minutes = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60);
+        });
 
-      return minutes + ":" + (secs < 10 ? "0" : "") + secs;
-    }
-  </script>
 
-</body>
-</html>
+        /* CLICK PROGRESS BAR */
+
+        progressContainer.addEventListener(
+            "click",
+            (event) => {
+
+                if (!audio.duration) return;
+
+                const width =
+                    progressContainer.clientWidth;
+
+                const clickX =
+                    event.offsetX;
+
+                audio.currentTime =
+                    (clickX / width) * audio.duration;
+
+            }
+        );
+
+
+        /* SONG ENDED */
+
+        audio.addEventListener("ended", () => {
+
+            playButton.textContent = "▶";
+
+            progress.style.width = "0%";
+
+            currentTime.textContent = "0:00";
+
+        });
+
+
+        /* FORMAT TIME */
+
+        function formatTime(seconds) {
+
+            if (isNaN(seconds)) {
+                return "0:00";
+            }
+
+            const minutes =
+                Math.floor(seconds / 60);
+
+            const secs =
+                Math.floor(seconds % 60);
+
+            return minutes + ":" +
+                (secs < 10 ? "0" : "") +
+                secs;
+
+        }
+
+    </script>
+
+
+    <!-- YOUR EXISTING JAVASCRIPT -->
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
+```
